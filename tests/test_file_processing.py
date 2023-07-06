@@ -35,7 +35,7 @@ class TestFileProcessing(TestCase):
                 with open(file_path, "w") as f:
                     f.write(content)
             # 调用 process_files 函数
-            file_processing.process_files(tmpdir, CONFIG_TEST, simple_translate)
+            file_processing.process_files(CONFIG_TEST, simple_translate)
 
             # 检查翻译后的文件是否存在并验证其内容
             for filename, original_content in test_files.items():
@@ -60,7 +60,7 @@ class TestFileProcessing(TestCase):
 
             # 调用 process_files 函数
             file_processing.process_files(
-                tmpdir, CONFIG_TEST, simple_translate)
+                CONFIG_TEST, simple_translate)
 
             # 检查翻译后的文件是否存在
             translated_file_path = os.path.join(tmpdir, test_file)
@@ -89,7 +89,7 @@ class TestFileProcessing(TestCase):
 
             # 调用 process_files 函数
             file_processing.process_files(
-                tmpdir, CONFIG_TEST, simple_translate)
+                CONFIG_TEST, simple_translate)
 
             # 检查翻译后的文件是否存在并验证其内容
             for filename, original_content in test_files.items():
