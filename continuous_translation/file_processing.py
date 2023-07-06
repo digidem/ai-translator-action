@@ -21,17 +21,17 @@ def merge_paragraphs(paragraphs, max_length):
     return merged
 
 # 翻译文件
-def translate_files(repo_path, config):
-    return process_files(repo_path, config, translate)
+def translate_files(config):
+    return process_files(config, translate)
 
 # 处理文件并翻译
-def process_files(repo_path: str, config, translate_func: str):
+def process_files(config, translate_func: str):
     source_language: str = config["SOURCE_LANGUAGE"]
     target_language: str = config["TARGET_LANGUAGE"]
     api_key: str = config["API_KEY"]
     additional_prompt: str = config["ADDITIONAL_PROMPT"]
     # 遍历文件
-    for root, _, files in os.walk(repo_path):
+    for root, _, files in os.walk('.'):
         for file in files:
             if re.match(config["FILE_PATHS_FILTER"], file) is None:
                 continue
@@ -68,6 +68,3 @@ def process_files(repo_path: str, config, translate_func: str):
                 f.write(translated)
             logging.info("File saved.")
 
-# remove .git folder and move files to root
-def move_files_to_target(repo_path, target_path):
-    os.system(f"rm -rf {repo_path}/.git && mv {repo_path}/* {target_path} && rm -rf {repo_path}")
