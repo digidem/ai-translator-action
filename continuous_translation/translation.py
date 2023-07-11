@@ -72,7 +72,7 @@ format: Return only the translated content, not including the original text."""
             time.sleep(3)  # Sleep for 3 seconds before each API call
             # 调用 ChatGPT API
             completion = openai.ChatCompletion.create(
-                model="gpt-4",
+                model="gpt-3.5-turbo",
                 messages=[
                     {
                         "role": "system",
