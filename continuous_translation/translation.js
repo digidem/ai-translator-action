@@ -29,13 +29,13 @@ except for code comments, which should be translated. Be cautious when translati
 """
 
 PYTHON_CODE_PROMPT = """
-Your task is to translate code comments, while preserving the original code formatting.
+Your task is to translate code comments to JavaScript, while preserving the original code formatting.
 Make sure to translate the content inside code comments, but leave the code unchanged.
 Be cautious when translating imports, variables, and keywords.
 """
 
 CODE_PROMPT = """
-Your task is to translate code comments, while preserving the original code formatting.
+Your task is to translate code comments to JavaScript, while preserving the original code formatting.
 Make sure to translate the content inside code comments, but leave the code unchanged.
 Be cautious when translating imports, variables, and keywords.
 """
@@ -70,7 +70,7 @@ format: Return only the translated content, not including the original text."""
             logging.info(f"User prompt: {user_prompt}")
 
             time.sleep(3)  # Sleep for 3 seconds before each API call
-            # 调用 ChatGPT API
+            # Call the ChatGPT API
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
