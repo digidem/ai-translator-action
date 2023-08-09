@@ -1,0 +1,21 @@
+import os;
+import logging;
+const { translateFiles } = require('./continuous_translation/file_processing');
+const { ConfigurationError, loadConfig } = require('./continuous_translation/config');
+
+const repoPath = "local_repo";
+
+function main() {
+    logging.basicConfig(level=logging.INFO);
+    try {
+        const config = loadConfig();
+    } catch (e) {
+        logging.error(e.toString());
+        return;
+    }
+    translateFiles(config);
+}
+
+if (require.main === module) {
+    main();
+}
